@@ -1,4 +1,4 @@
-// spider-bot-8 by DRODI | MIT licence | see README.md
+// spider-bot-8 by DRODI | MIT licence | https://github.com/awd1779/spider-bot-8
 // P8 - Walk forward (creep gait: one leg in the air at a time)
 // Serial Monitor (115200 baud):  s = stand,  d = sit,  f = walk forward 2 cycles
 

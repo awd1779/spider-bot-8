@@ -1,4 +1,4 @@
-// spider-bot-8 by DRODI | MIT licence | see README.md
+// spider-bot-8 by DRODI | MIT licence | https://github.com/awd1779/spider-bot-8
 // P7 - Stand up and sit down
 // Serial Monitor (115200 baud):  s = stand up,  d = sit down
 

@@ -1,4 +1,4 @@
-// spider-bot-8 by DRODI | MIT licence | see README.md
+// spider-bot-8 by DRODI | MIT licence | https://github.com/awd1779/spider-bot-8
 // P4 - Two servos make one leg take a step
 // Hip servo on channel 0 (forward / back), lift servo on channel 1 (up / down).
 

@@ -57,7 +57,7 @@ The legs step in the order rear-left → front-left → rear-right → front-rig
 
 Students and makers are welcome to build, remix and improve this robot. If you use it in a project, report or portfolio, please credit it like this:
 
-> Based on **spider-bot-8** by DRODI, an open-source 8-servo spider robot (MIT / CC BY-SA 4.0).
+> Based on **spider-bot-8** by DRODI, an open-source 8-servo spider robot (MIT / CC BY-SA 4.0): https://github.com/awd1779/spider-bot-8
 
 There is also a [`CITATION.cff`](CITATION.cff) file. GitHub's **"Cite this repository"** button uses it to make a citation for you.
 

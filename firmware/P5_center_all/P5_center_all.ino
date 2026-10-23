@@ -1,4 +1,4 @@
-// spider-bot-8 by DRODI | MIT licence | see README.md
+// spider-bot-8 by DRODI | MIT licence | https://github.com/awd1779/spider-bot-8
 // P5 - Centre all 8 servos (run this BEFORE you fit the horns)
 // Every leg servo goes to exactly 90 degrees (1450 us) and stays there.
 // Leave it running while you push the horns and legs on.

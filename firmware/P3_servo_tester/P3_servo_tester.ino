@@ -1,4 +1,4 @@
-// spider-bot-8 by DRODI | MIT licence | see README.md
+// spider-bot-8 by DRODI | MIT licence | https://github.com/awd1779/spider-bot-8
 // P3 - Servo tester
 // Type a channel and an angle in the Serial Monitor (115200 baud, "Newline"), e.g.
 //   0 90     -> channel 0 to 90 degrees

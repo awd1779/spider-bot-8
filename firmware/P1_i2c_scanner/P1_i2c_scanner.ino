@@ -1,4 +1,4 @@
-// spider-bot-8 by DRODI | MIT licence | see README.md
+// spider-bot-8 by DRODI | MIT licence | https://github.com/awd1779/spider-bot-8
 // P1 - I2C scanner
 // Finds every I2C device on SDA / SCL and prints its address.
 // The PCA9685 servo module should show up as 0x40.

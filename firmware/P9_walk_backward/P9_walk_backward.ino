@@ -1,4 +1,4 @@
-// spider-bot-8 by DRODI | MIT licence | see README.md
+// spider-bot-8 by DRODI | MIT licence | https://github.com/awd1779/spider-bot-8
 // P9 - Walk forward and backward: the whole robot
 // Serial Monitor (115200 baud):  s = stand,  d = sit,  f = forward,  b = backward
 

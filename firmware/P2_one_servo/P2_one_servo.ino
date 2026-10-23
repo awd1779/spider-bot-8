@@ -1,4 +1,4 @@
-// spider-bot-8 by DRODI | MIT licence | see README.md
+// spider-bot-8 by DRODI | MIT licence | https://github.com/awd1779/spider-bot-8
 // P2 - Move one servo with the PCA9685
 // Servo on channel 0. It goes to 90, 45 and 135 degrees, then sweeps smoothly.
 

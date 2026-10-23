@@ -505,7 +505,7 @@ details.full summary { cursor:pointer; font-weight:650; }
 </div>
 <h3>2.3 Activity: find the module</h3>
 <p>Upload this sketch, open the Serial Monitor, and check that the ESP32 can see the module.</p>
-<div class="code"><button class="copy" type="button">Copy</button><pre><code>// spider-bot-8 by DRODI | MIT licence | see README.md
+<div class="code"><button class="copy" type="button">Copy</button><pre><code>// spider-bot-8 by DRODI | MIT licence | https://github.com/awd1779/spider-bot-8
 // P1 - I2C scanner
 // Finds every I2C device on SDA / SCL and prints its address.
 // The PCA9685 servo module should show up as 0x40.
@@ -572,7 +572,7 @@ void loop() {
 </section><section class="chapter"><h2 id="ch3">Chapter 3 · Controlling servo motors</h2>
 <h3>3.1 Activity: move one servo</h3>
 <p>Plug one servo into <strong>channel 0</strong>, brown wire on the GND side. Switch on the batteries, then upload:</p>
-<div class="code"><button class="copy" type="button">Copy</button><pre><code>// spider-bot-8 by DRODI | MIT licence | see README.md
+<div class="code"><button class="copy" type="button">Copy</button><pre><code>// spider-bot-8 by DRODI | MIT licence | https://github.com/awd1779/spider-bot-8
 // P2 - Move one servo with the PCA9685
 // Servo on channel 0. It goes to 90, 45 and 135 degrees, then sweeps smoothly.
 
@@ -660,7 +660,7 @@ void loop() {
 <p>Try it: change <code>delay(15)</code> to <code>delay(5)</code>, then to <code>delay(40)</code>. What happens?</p>
 <h3>3.2 Activity: the servo tester</h3>
 <p>This sketch lets you type any channel and angle. You'll use it again to check servos and wiring.</p>
-<div class="code"><button class="copy" type="button">Copy</button><pre><code>// spider-bot-8 by DRODI | MIT licence | see README.md
+<div class="code"><button class="copy" type="button">Copy</button><pre><code>// spider-bot-8 by DRODI | MIT licence | https://github.com/awd1779/spider-bot-8
 // P3 - Servo tester
 // Type a channel and an angle in the Serial Monitor (115200 baud, &quot;Newline&quot;), e.g.
 //   0 90     -&gt; channel 0 to 90 degrees
@@ -730,7 +730,7 @@ void loop() {
 <p>Try it: type <code>0 90</code>, then <code>0 0</code>, then <code>0 180</code>. Then move the plug to channel 5 and type <code>5 45</code>.</p>
 <h3>3.3 Activity: one leg takes a step</h3>
 <p>A leg has two servos: the <strong>hip</strong> (forward and back) and the <strong>lift</strong> (up and down). Plug the hip servo into <strong>channel 0</strong> and the lift servo into <strong>channel 1</strong>. A step only works if the moves happen in the right order: lift, swing forward, put down, push back.</p>
-<div class="code"><button class="copy" type="button">Copy</button><pre><code>// spider-bot-8 by DRODI | MIT licence | see README.md
+<div class="code"><button class="copy" type="button">Copy</button><pre><code>// spider-bot-8 by DRODI | MIT licence | https://github.com/awd1779/spider-bot-8
 // P4 - Two servos make one leg take a step
 // Hip servo on channel 0 (forward / back), lift servo on channel 1 (up / down).
 
@@ -895,7 +895,7 @@ void loop() {
 <p>Print one shoulder and one leg first and test them (4.2–4.4) before printing the rest.</p>
 <h3>4.2 Centre every servo first</h3>
 <p>Plug all 8 servos into the module: <strong>channels 0, 1, 4, 5, 8, 9, 12 and 13</strong>. Switch on the batteries and upload:</p>
-<div class="code"><button class="copy" type="button">Copy</button><pre><code>// spider-bot-8 by DRODI | MIT licence | see README.md
+<div class="code"><button class="copy" type="button">Copy</button><pre><code>// spider-bot-8 by DRODI | MIT licence | https://github.com/awd1779/spider-bot-8
 // P5 - Centre all 8 servos (run this BEFORE you fit the horns)
 // Every leg servo goes to exactly 90 degrees (1450 us) and stays there.
 // Leave it running while you push the horns and legs on.
@@ -995,7 +995,7 @@ void loop() {
 </ul>
 <h3>4.9 Activity: calibrate</h3>
 <p>Upload this sketch and open the Serial Monitor:</p>
-<details class="full"><summary>Full sketch: P6_calibrate.ino</summary><div class="code"><button class="copy" type="button">Copy</button><pre><code>// spider-bot-8 by DRODI | MIT licence | see README.md
+<details class="full"><summary>Full sketch: P6_calibrate.ino</summary><div class="code"><button class="copy" type="button">Copy</button><pre><code>// spider-bot-8 by DRODI | MIT licence | https://github.com/awd1779/spider-bot-8
 // P6 - Calibrate the robot
 // Open the Serial Monitor (115200 baud, &quot;Newline&quot;) and type:
 //   test        -&gt; moves each joint a little, one at a time: watch the direction
@@ -1262,7 +1262,7 @@ void sitDown() {
 }</code></pre></div>
 <h3>5.3 Activity: stand up and sit down</h3>
 <p>Paste your calibration numbers into the sketch, put the robot on the floor, switch on the batteries and upload:</p>
-<details class="full"><summary>Full sketch: P7_stand_sit.ino</summary><div class="code"><button class="copy" type="button">Copy</button><pre><code>// spider-bot-8 by DRODI | MIT licence | see README.md
+<details class="full"><summary>Full sketch: P7_stand_sit.ino</summary><div class="code"><button class="copy" type="button">Copy</button><pre><code>// spider-bot-8 by DRODI | MIT licence | https://github.com/awd1779/spider-bot-8
 // P7 - Stand up and sit down
 // Serial Monitor (115200 baud):  s = stand up,  d = sit down
 
@@ -1512,7 +1512,7 @@ void walkForward(int cycles) {
 </table></div>
 <h3>6.4 Activity: walk forward</h3>
 <p>Paste your calibration numbers, put the robot on the floor and upload:</p>
-<details class="full"><summary>Full sketch: P8_walk_forward.ino</summary><div class="code"><button class="copy" type="button">Copy</button><pre><code>// spider-bot-8 by DRODI | MIT licence | see README.md
+<details class="full"><summary>Full sketch: P8_walk_forward.ino</summary><div class="code"><button class="copy" type="button">Copy</button><pre><code>// spider-bot-8 by DRODI | MIT licence | https://github.com/awd1779/spider-bot-8
 // P8 - Walk forward (creep gait: one leg in the air at a time)
 // Serial Monitor (115200 baud):  s = stand,  d = sit,  f = walk forward 2 cycles
 
@@ -1779,7 +1779,7 @@ void walkBackward(int cycles) {
 </table></div>
 <h3>7.3 Activity: the whole robot</h3>
 <p>This sketch has everything: stand, sit, forward and backward. Paste your calibration numbers and upload:</p>
-<details class="full"><summary>Full sketch: P9_walk_backward.ino</summary><div class="code"><button class="copy" type="button">Copy</button><pre><code>// spider-bot-8 by DRODI | MIT licence | see README.md
+<details class="full"><summary>Full sketch: P9_walk_backward.ino</summary><div class="code"><button class="copy" type="button">Copy</button><pre><code>// spider-bot-8 by DRODI | MIT licence | https://github.com/awd1779/spider-bot-8
 // P9 - Walk forward and backward: the whole robot
 // Serial Monitor (115200 baud):  s = stand,  d = sit,  f = forward,  b = backward
 

@@ -1,4 +1,4 @@
-// spider-bot-8 by DRODI | MIT licence | see README.md
+// spider-bot-8 by DRODI | MIT licence | https://github.com/awd1779/spider-bot-8
 // P6 - Calibrate the robot
 // Open the Serial Monitor (115200 baud, "Newline") and type:
 //   test        -> moves each joint a little, one at a time: watch the direction
