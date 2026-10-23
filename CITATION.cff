@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you build on or use this robot, please cite it like this."
+title: "spider-bot-8: an open-source 8-servo spider robot"
+type: software
+authors:
+  - name: "DRODI"
+version: "1.0.0"
+date-released: "2026-10-23"
+license: MIT
+keywords:
+  - robotics
+  - quadruped
+  - ESP32
+  - PCA9685
+  - servo
+  - education
+  - 3D printing
+abstract: >-
+  A 3D-printed four-legged spider robot with 8 MG90S servos, an ESP32 and a
+  PCA9685 servo module, with a step-by-step student manual covering servos,
+  calibration, standing, sitting and a stable crawl gait.

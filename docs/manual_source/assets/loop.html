@@ -1,0 +1,18 @@
+<figure class="diagram" aria-label="Inside a servo: a closed loop">
+<svg viewBox="0 0 720 250" role="img" aria-label="Inside a servo the control board drives the motor until the potentiometer reads the asked-for angle">
+  <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="dfill"/></marker></defs>
+  <g class="dbox"><rect x="10" y="60" width="120" height="56" rx="8"/><text x="70" y="85" class="dt">Arduino</text><text x="70" y="104" class="ds">sends a pulse</text></g>
+  <g class="dbox acc"><rect x="170" y="60" width="140" height="56" rx="8"/><text x="240" y="85" class="dt">Control board</text><text x="240" y="104" class="ds">asked vs. real angle</text></g>
+  <g class="dbox"><rect x="350" y="60" width="110" height="56" rx="8"/><text x="405" y="85" class="dt">DC motor</text><text x="405" y="104" class="ds">fast, weak</text></g>
+  <g class="dbox"><rect x="500" y="60" width="100" height="56" rx="8"/><text x="550" y="85" class="dt">Gears</text><text x="550" y="104" class="ds">slow, strong</text></g>
+  <g class="dbox"><rect x="620" y="60" width="90" height="56" rx="8"/><text x="665" y="85" class="dt">Shaft</text><text x="665" y="104" class="ds">+ horn</text></g>
+  <g class="dbox"><rect x="420" y="170" width="150" height="56" rx="8"/><text x="495" y="195" class="dt">Potentiometer</text><text x="495" y="214" class="ds">measures the angle</text></g>
+  <g class="dline">
+    <path d="M130 88H168" marker-end="url(#arr)"/><path d="M310 88H348" marker-end="url(#arr)"/>
+    <path d="M460 88H498" marker-end="url(#arr)"/><path d="M600 88H618" marker-end="url(#arr)"/>
+    <path d="M665 116V198H572" marker-end="url(#arr)"/><path d="M420 198H240V118" marker-end="url(#arr)"/>
+  </g>
+  <text x="330" y="190" class="ds">real angle, fed back</text>
+  <text x="360" y="30" class="dt">The board keeps driving the motor until the real angle matches</text>
+</svg>
+</figure>

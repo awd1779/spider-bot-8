@@ -1,0 +1,48 @@
+<div class="sim" id="servoSim">
+  <div class="sim-controls">
+    <label for="angle">Angle <output id="angOut">90°</output></label>
+    <input id="angle" type="range" min="0" max="180" value="90" step="1">
+    <div class="presets" role="group" aria-label="Preset angles">
+      <button type="button" data-a="0">0°</button><button type="button" data-a="45">45°</button><button type="button" data-a="90">90°</button><button type="button" data-a="135">135°</button><button type="button" data-a="180">180°</button>
+    </div>
+    <div class="volt" role="group" aria-label="Supply voltage">
+      <span>Supply</span>
+      <button type="button" data-v="4.8" class="on">4.8 V</button><button type="button" data-v="6">6.0 V</button>
+    </div>
+    <div class="readout"><b id="usOut">1450 µs</b><span id="moveOut">Drag the slider or pick an angle</span></div>
+  </div>
+  <div class="sim-panels">
+    <figure><svg viewBox="0 0 300 230" role="img" aria-label="Pulse length against angle: a straight line from 500 microseconds at 0 degrees to 2400 at 180">
+      <text x="150" y="16" class="dt">Pulse length vs angle</text>
+      <path d="M50 30H285M50 105H285" class="grid"/>
+      <path d="M50 180H285M50 180V26" class="axis"/>
+      <text x="44" y="184" class="ds end">500</text><text x="44" y="109" class="ds end">1450</text><text x="44" y="34" class="ds end">2400</text>
+      <text x="50" y="198" class="ds">0°</text><text x="108.75" y="198" class="ds">45°</text><text x="167.5" y="198" class="ds">90°</text><text x="226.25" y="198" class="ds">135°</text><text x="285" y="198" class="ds">180°</text>
+      <text x="167" y="222" class="ds">angle</text>
+      <text x="14" y="105" class="ds" transform="rotate(-90 14 105)">pulse (µs)</text>
+      <path d="M50 180L285 30" class="line"/>
+      <path id="guide" d="" class="guide"/>
+      <circle id="dot" r="6" class="dot" cx="167.5" cy="105"/>
+    </svg><figcaption>Every degree adds about 10.6 µs</figcaption></figure>
+    <figure><svg viewBox="0 0 300 230" role="img" aria-label="The signal: 5 volts for the pulse length, then 0 volts">
+      <text x="150" y="16" class="dt">The signal wire</text>
+      <path d="M40 60H290M40 170H290" class="grid"/>
+      <text x="34" y="64" class="ds end">5 V</text><text x="34" y="174" class="ds end">0 V</text>
+      <path id="wave" d="" class="wave"/>
+      <path id="wArrow" d="" class="guide"/>
+      <text id="wLabel" x="100" y="48" class="dt acc">1450 µs</text>
+      <text x="40" y="196" class="ds">0</text><text x="123" y="196" class="ds">1 ms</text><text x="207" y="196" class="ds">2 ms</text><text x="288" y="196" class="ds end">3 ms</text>
+      <text x="165" y="222" class="ds">then 0 V until 20 ms, and repeat</text>
+    </svg><figcaption>Only the length of the 5 V part matters</figcaption></figure>
+    <figure><svg viewBox="0 0 300 230" role="img" aria-label="The horn turns to the angle">
+      <text x="150" y="16" class="dt">The horn</text>
+      <path d="M50 160A100 100 0 0 1 250 160" class="arc"/>
+      <path d="M40 160H55M150 60V75M245 160H260M79.3 89.3L89.9 99.9M220.7 89.3L210.1 99.9" class="ticks"/>
+      <text x="36" y="178" class="ds">0°</text><text x="150" y="52" class="ds">90°</text><text x="264" y="178" class="ds">180°</text>
+      <rect x="112" y="150" width="76" height="60" rx="6" class="body"/>
+      <text x="150" y="200" class="ds inv">MG90S</text>
+      <g id="horn"><path d="M150 160L150 80" class="horn"/><circle cx="150" cy="80" r="6" class="hornTip"/></g>
+      <circle cx="150" cy="160" r="11" class="hub"/>
+    </svg><figcaption>The voltage changes the speed, not where it stops</figcaption></figure>
+  </div>
+</div>
