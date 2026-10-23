@@ -13,6 +13,7 @@ In this manual you build a four-legged spider robot and teach it to stand up, si
 5. Stand up and sit down
 6. Walk forward
 7. Walk backward
+8. The easy way: the SpiderBot8 library
 
 **Parts**
 
@@ -567,6 +568,70 @@ This sketch has everything: stand, sit, forward and backward. Paste your calibra
 - [ ] Why can `stepLeg` and `shiftBody` stay the same?
 - [ ] Your robot can stand, sit, walk forward and walk backward
 
+## Chapter 8 · The easy way: the SpiderBot8 library {#ch8}
+
+In Chapters 5 to 7 you wrote `setLeg`, `moveLegs`, `stepLeg`, `shiftBody` and the gait yourself. A **library** packs code like this into one file you can reuse, so a whole program can be a few lines long. Professional programmers use libraries all the time: you've been using one since Chapter 3 (`Adafruit_PWMServoDriver`).
+
+### 8.1 Install it
+
+1. Download **SpiderBot8.zip** from the project page: `github.com/awd1779/spider-bot-8`, in the `library` folder.
+2. In Arduino IDE: **Sketch → Include Library → Add .ZIP Library...** and choose the zip.
+3. The examples appear under **File → Examples → SpiderBot8**.
+
+### 8.2 Calibrate with the library
+
+Open the example **04_Calibrate**. It works just like P6 (4.9): `h`, `l`, `test`, `fh`, `fl`. When you type `print`, it prints lines like these, ready to paste just after `robot.begin();`:
+
+```cpp
+robot.setTrim(REAR_LEFT, 3, -2);
+robot.setDirection(REAR_LEFT, -1, -1);
+```
+
+### 8.3 A whole walk in a few lines
+
+{{LIBEX:02_WalkAround}}
+
+| Code | What it does |
+| --- | --- |
+| `SpiderBot robot;` | Makes a robot object called `robot` |
+| `robot.begin();` | Starts the servo module. The robot sits |
+| `robot.setTrim(REAR_LEFT, 0, 0);` | Your calibration: hip and lift trim for one leg |
+| `robot.walkForward(8);` | 8 steps of the crawl gait from Chapter 6, about 1.3 cm each |
+| `robot.turnLeft(8);` | Turns on the spot, about 6° per step |
+| `robot.wave();` | Leans back, then waves the front-right leg |
+
+### 8.4 All the commands
+
+| Command | What it does |
+| --- | --- |
+| `standUp()`, `sitDown()` | Stand up, sit down |
+| `walkForward(steps)`, `walkBackward(steps)` | Walk. 4 steps = one full cycle |
+| `turnLeft(steps)`, `turnRight(steps)` | Turn on the spot |
+| `wave(times)`, `pushUps(times)` | Fun moves |
+| `moveLeg(leg, hip, lift, ms)` | Move one leg smoothly (your own moves) |
+| `moveLegs(hips, lifts, ms)` | Move all 4 legs together, smoothly |
+| `setSpeed(percent)` | 100 = normal, 200 = twice as fast |
+| `setStandHeight(lift)`, `setStepSize(hip)`, `setStepHeight(lift)` | Change how it stands and walks |
+| `relax()` | Switch the servos off to save the batteries |
+
+**How does turning work?** Walking moves every foot forward or back. Turning moves the right feet forward and the left feet back, so every foot goes the **same way round** the body. The gait is the same crawl: one foot in the air at a time, legs one step apart. When turning, the centre of mass stays even further inside the triangle than when walking.
+
+### 8.5 Activity: your own program
+
+Open **03_SerialControl** to drive the robot from the keyboard (`f`, `b`, `l`, `r`, `s`, `d`, `w`). Then open **05_MyOwnMoves** and look at how `rock()` and `nod()` use `moveLegs` to make new moves.
+
+**Challenges**
+
+1. Make the robot walk a square: forward, turn, forward, turn ... until it's back where it started. How many turn steps make 90°?
+2. Make up a dance with at least 3 of your own moves, using `moveLeg` or `moveLegs`.
+3. With the ultrasonic sensor: walk forward 4 steps at a time; if something is closer than 15 cm, turn left 8 steps instead.
+
+**Check yourself (Chapter 8)**
+
+- [ ] What is a library, and why is it useful?
+- [ ] Which line in your sketch holds your calibration numbers?
+- [ ] How is turning different from walking?
+
 ## Troubleshooting and glossary {#help}
 
 | Problem | Likely cause | Fix |
@@ -596,3 +661,4 @@ This sketch has everything: stand, sit, forward and backward. Paste your calibra
 | Centre of mass | The point where the robot's weight acts |
 | Support triangle | The area between the feet on the floor |
 | Creep gait | Walking with one leg in the air at a time |
+| Library | Ready-made code you add to a sketch with `#include` |

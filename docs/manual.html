@@ -170,7 +170,7 @@ details.full summary { cursor:pointer; font-weight:650; }
 <div class="layout">
 <nav aria-label="Chapters">
   <div class="brand">Spider Robot <span>Manual</span></div>
-  <ol><li><a href="#welcome">Welcome</a></li><li><a href="#ch1">Chapter 1 · How servo motors work</a></li><li><a href="#ch2">Chapter 2 · The servo module (PCA9685)</a></li><li><a href="#ch3">Chapter 3 · Controlling servo motors</a></li><li><a href="#ch4">Chapter 4 · Assembly and calibration</a></li><li><a href="#ch5">Chapter 5 · Stand up and sit down</a></li><li><a href="#ch6">Chapter 6 · Walk forward</a></li><li><a href="#ch7">Chapter 7 · Walk backward</a></li><li><a href="#help">Troubleshooting and glossary</a></li></ol>
+  <ol><li><a href="#welcome">Welcome</a></li><li><a href="#ch1">Chapter 1 · How servo motors work</a></li><li><a href="#ch2">Chapter 2 · The servo module (PCA9685)</a></li><li><a href="#ch3">Chapter 3 · Controlling servo motors</a></li><li><a href="#ch4">Chapter 4 · Assembly and calibration</a></li><li><a href="#ch5">Chapter 5 · Stand up and sit down</a></li><li><a href="#ch6">Chapter 6 · Walk forward</a></li><li><a href="#ch7">Chapter 7 · Walk backward</a></li><li><a href="#ch8">Chapter 8 · The easy way: the SpiderBot8 library</a></li><li><a href="#help">Troubleshooting and glossary</a></li></ol>
 </nav>
 <main>
 <header class="cover">
@@ -190,6 +190,7 @@ details.full summary { cursor:pointer; font-weight:650; }
 <li>Stand up and sit down</li>
 <li>Walk forward</li>
 <li>Walk backward</li>
+<li>The easy way: the SpiderBot8 library</li>
 </ol>
 <p class="sub">Parts</p>
 <div class="tablewrap"><table>
@@ -1977,6 +1978,144 @@ void loop() {
 <li class="check"><label><input type="checkbox" data-k="e28"><span>Why can <code>stepLeg</code> and <code>shiftBody</code> stay the same?</span></label></li>
 <li class="check"><label><input type="checkbox" data-k="e29"><span>Your robot can stand, sit, walk forward and walk backward</span></label></li>
 </ul>
+</section><section class="chapter"><h2 id="ch8">Chapter 8 · The easy way: the SpiderBot8 library</h2>
+<p>In Chapters 5 to 7 you wrote <code>setLeg</code>, <code>moveLegs</code>, <code>stepLeg</code>, <code>shiftBody</code> and the gait yourself. A <strong>library</strong> packs code like this into one file you can reuse, so a whole program can be a few lines long. Professional programmers use libraries all the time: you've been using one since Chapter 3 (<code>Adafruit_PWMServoDriver</code>).</p>
+<h3>8.1 Install it</h3>
+<ol>
+<li>Download <strong>SpiderBot8.zip</strong> from the project page: <code>github.com/awd1779/spider-bot-8</code>, in the <code>library</code> folder.</li>
+<li>In Arduino IDE: <strong>Sketch → Include Library → Add .ZIP Library...</strong> and choose the zip.</li>
+<li>The examples appear under <strong>File → Examples → SpiderBot8</strong>.</li>
+</ol>
+<h3>8.2 Calibrate with the library</h3>
+<p>Open the example <strong>04_Calibrate</strong>. It works just like P6 (4.9): <code>h</code>, <code>l</code>, <code>test</code>, <code>fh</code>, <code>fl</code>. When you type <code>print</code>, it prints lines like these, ready to paste just after <code>robot.begin();</code>:</p>
+<pre><code class="language-cpp">robot.setTrim(REAR_LEFT, 3, -2);
+robot.setDirection(REAR_LEFT, -1, -1);
+</code></pre>
+<h3>8.3 A whole walk in a few lines</h3>
+<div class="code"><button class="copy" type="button">Copy</button><pre><code>// SpiderBot8 example 2: walk a square-ish path, then sit down
+#include &lt;SpiderBot8.h&gt;
+
+SpiderBot robot;
+
+void setup() {
+  robot.begin();
+
+  // ---- paste your calibration from 04_Calibrate here ----
+  robot.setTrim(REAR_LEFT,   0, 0);
+  robot.setTrim(REAR_RIGHT,  0, 0);
+  robot.setTrim(FRONT_RIGHT, 0, 0);
+  robot.setTrim(FRONT_LEFT,  0, 0);
+  // ---------------------------------------------------------
+
+  delay(1000);
+  robot.standUp();
+  robot.walkForward(8);   // 8 steps, about 10 cm
+  robot.turnLeft(8);      // about 50 degrees
+  robot.walkForward(8);
+  robot.walkBackward(8);
+  robot.turnRight(8);
+  robot.wave();
+  robot.sitDown();
+}
+
+void loop() {
+}</code></pre></div>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SpiderBot robot;</code></td>
+<td>Makes a robot object called <code>robot</code></td>
+</tr>
+<tr>
+<td><code>robot.begin();</code></td>
+<td>Starts the servo module. The robot sits</td>
+</tr>
+<tr>
+<td><code>robot.setTrim(REAR_LEFT, 0, 0);</code></td>
+<td>Your calibration: hip and lift trim for one leg</td>
+</tr>
+<tr>
+<td><code>robot.walkForward(8);</code></td>
+<td>8 steps of the crawl gait from Chapter 6, about 1.3 cm each</td>
+</tr>
+<tr>
+<td><code>robot.turnLeft(8);</code></td>
+<td>Turns on the spot, about 6° per step</td>
+</tr>
+<tr>
+<td><code>robot.wave();</code></td>
+<td>Leans back, then waves the front-right leg</td>
+</tr>
+</tbody>
+</table></div>
+<h3>8.4 All the commands</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Command</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>standUp()</code>, <code>sitDown()</code></td>
+<td>Stand up, sit down</td>
+</tr>
+<tr>
+<td><code>walkForward(steps)</code>, <code>walkBackward(steps)</code></td>
+<td>Walk. 4 steps = one full cycle</td>
+</tr>
+<tr>
+<td><code>turnLeft(steps)</code>, <code>turnRight(steps)</code></td>
+<td>Turn on the spot</td>
+</tr>
+<tr>
+<td><code>wave(times)</code>, <code>pushUps(times)</code></td>
+<td>Fun moves</td>
+</tr>
+<tr>
+<td><code>moveLeg(leg, hip, lift, ms)</code></td>
+<td>Move one leg smoothly (your own moves)</td>
+</tr>
+<tr>
+<td><code>moveLegs(hips, lifts, ms)</code></td>
+<td>Move all 4 legs together, smoothly</td>
+</tr>
+<tr>
+<td><code>setSpeed(percent)</code></td>
+<td>100 = normal, 200 = twice as fast</td>
+</tr>
+<tr>
+<td><code>setStandHeight(lift)</code>, <code>setStepSize(hip)</code>, <code>setStepHeight(lift)</code></td>
+<td>Change how it stands and walks</td>
+</tr>
+<tr>
+<td><code>relax()</code></td>
+<td>Switch the servos off to save the batteries</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>How does turning work?</strong> Walking moves every foot forward or back. Turning moves the right feet forward and the left feet back, so every foot goes the <strong>same way round</strong> the body. The gait is the same crawl: one foot in the air at a time, legs one step apart. When turning, the centre of mass stays even further inside the triangle than when walking.</p>
+<h3>8.5 Activity: your own program</h3>
+<p>Open <strong>03_SerialControl</strong> to drive the robot from the keyboard (<code>f</code>, <code>b</code>, <code>l</code>, <code>r</code>, <code>s</code>, <code>d</code>, <code>w</code>). Then open <strong>05_MyOwnMoves</strong> and look at how <code>rock()</code> and <code>nod()</code> use <code>moveLegs</code> to make new moves.</p>
+<p class="sub">Challenges</p>
+<ol>
+<li>Make the robot walk a square: forward, turn, forward, turn ... until it's back where it started. How many turn steps make 90°?</li>
+<li>Make up a dance with at least 3 of your own moves, using <code>moveLeg</code> or <code>moveLegs</code>.</li>
+<li>With the ultrasonic sensor: walk forward 4 steps at a time; if something is closer than 15 cm, turn left 8 steps instead.</li>
+</ol>
+<p class="sub">Check yourself (Chapter 8)</p>
+<ul class="checklist">
+<li class="check"><label><input type="checkbox" data-k="e30"><span>What is a library, and why is it useful?</span></label></li>
+<li class="check"><label><input type="checkbox" data-k="e31"><span>Which line in your sketch holds your calibration numbers?</span></label></li>
+<li class="check"><label><input type="checkbox" data-k="e32"><span>How is turning different from walking?</span></label></li>
+</ul>
 </section><section class="chapter"><h2 id="help">Troubleshooting and glossary</h2>
 <div class="tablewrap"><table>
 <thead>
@@ -2084,6 +2223,10 @@ void loop() {
 <tr>
 <td>Creep gait</td>
 <td>Walking with one leg in the air at a time</td>
+</tr>
+<tr>
+<td>Library</td>
+<td>Ready-made code you add to a sketch with <code>#include</code></td>
 </tr>
 </tbody>
 </table></div></section>

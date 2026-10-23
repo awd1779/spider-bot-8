@@ -14,6 +14,7 @@ The robot stands up, sits down, and walks forward and backward with a stable **c
 | [`docs/manual.html`](docs/manual.html) | **Start here.** The full build and code manual. Download it and open it in any browser: it works offline |
 | [`hardware/`](hardware/) | 3D-print files (STL), editable CAD files (STEP) and the parametric FreeCAD script that makes them |
 | [`firmware/`](firmware/) | Arduino sketches P1–P9, from "find the servo module" to "walk forward and backward" |
+| [`library/SpiderBot8/`](library/SpiderBot8/) | **SpiderBot8 Arduino library**: `robot.standUp()`, `robot.walkForward(8)`, `robot.turnLeft(4)` ... ([download the zip](https://github.com/awd1779/spider-bot-8/raw/main/library/SpiderBot8.zip)) |
 | [`docs/manual_source/`](docs/manual_source/) | The manual's source text and the script that builds it |
 
 ## The manual, chapter by chapter
@@ -25,6 +26,31 @@ The robot stands up, sits down, and walks forward and backward with a stable **c
 5. Stand up and sit down
 6. Walk forward: centre of mass, support triangle and the crawl gait (with a step-by-step diagram)
 7. Walk backward
+8. The easy way: the SpiderBot8 library
+
+## The SpiderBot8 library
+
+Once you understand how it works, the library lets you program the robot in a few lines:
+
+```cpp
+#include <SpiderBot8.h>
+
+SpiderBot robot;
+
+void setup() {
+  robot.begin();
+  robot.standUp();
+  robot.walkForward(8);
+  robot.turnLeft(4);
+  robot.wave();
+  robot.sitDown();
+}
+
+void loop() {
+}
+```
+
+To install it, download [`SpiderBot8.zip`](https://github.com/awd1779/spider-bot-8/raw/main/library/SpiderBot8.zip), then in Arduino IDE use **Sketch → Include Library → Add .ZIP Library**. The [library README](library/SpiderBot8/) lists all the commands, and it comes with 5 examples, including calibration and keyboard control.
 
 ## Parts (about AU$60–80)
 
@@ -65,7 +91,7 @@ Found a bug or made it better? Open an issue or a pull request.
 
 ## Licence
 
-- **Code** (`firmware/`, the `.py` scripts): [MIT](LICENSE)
+- **Code** (`firmware/`, `library/`, the `.py` scripts): [MIT](LICENSE)
 - **3D designs and the manual** (`hardware/` STL/STEP files, `docs/`): [CC BY-SA 4.0](LICENSE-CC-BY-SA.md). You may share and remix them, as long as you credit **DRODI** and share your version under the same licence.
 
 © 2026 DRODI

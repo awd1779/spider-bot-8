@@ -20,6 +20,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-This MIT licence covers the code: everything in firmware/ and the Python
-scripts (*.py). The 3D designs and the manual are licensed separately under
+This MIT licence covers the code: everything in firmware/ and library/, and
+the Python scripts (*.py). The 3D designs and the manual are licensed separately under
 CC BY-SA 4.0; see LICENSE-CC-BY-SA.md.

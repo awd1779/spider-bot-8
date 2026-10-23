@@ -23,6 +23,9 @@ def img_data(name):
 def sketch(name):
     return open(os.path.join(CODE, name, name + ".ino"), encoding="utf-8").read().rstrip()
 
+def lib_example(name):
+    return open(os.path.join(REPO, "library", "SpiderBot8", "examples", name, name + ".ino"), encoding="utf-8").read().rstrip()
+
 def code_block(src):
     return ('<div class="code"><button class="copy" type="button">Copy</button><pre><code>'
             + html.escape(src) + "</code></pre></div>")
@@ -44,6 +47,7 @@ def stash(htm):
     return "\n\n" + key + "\n\n"
 
 md = re.sub(r"\{\{CODE:(\w+)\}\}", lambda m: stash(code_block(sketch(m.group(1)))), md)
+md = re.sub(r"\{\{LIBEX:(\w+)\}\}", lambda m: stash(code_block(lib_example(m.group(1)))), md)
 md = re.sub(r"\{\{FULL:(\w+)\}\}", lambda m: stash(
     f'<details class="full"><summary>Full sketch: {m.group(1)}.ino</summary>' + code_block(sketch(m.group(1))) + "</details>"), md)
 md = re.sub(r"\{\{PART:(\w+)\|([^|}]+)\|?([^}]*)\}\}",
